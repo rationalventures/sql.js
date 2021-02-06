@@ -224,6 +224,13 @@ Module["onRuntimeInitialized"] = function onRuntimeInitialized() {
         "",
         ["number", "string", "number"]
     );
+
+    var sqlite3_resultset_ptr = cwrap(
+      'sqlite3_resultset_ptr',
+      'number',
+      ['number']
+    );
+
     var registerExtensionFunctions = cwrap(
         "RegisterExtensionFunctions",
         "number",
@@ -344,6 +351,16 @@ Module["onRuntimeInitialized"] = function onRuntimeInitialized() {
             default:
                 throw this.db.handleError(ret);
         }
+    };
+
+    Statement.prototype['getPtr'] = function() {
+       var res;
+       res = sqlite3_resultset_ptr(this.stmt);
+       return res;
+    };
+
+    Statement.prototype['getNumberAt'] = function (pos) {
+        return sqlite3_column_double(this.stmt, pos);
     };
 
     /*
@@ -799,6 +816,8 @@ Module["onRuntimeInitialized"] = function onRuntimeInitialized() {
         // (created by create_function call)
         this.functions = {};
     }
+
+    Database.prototype["FS"] = FS;    
 
     /** Execute an SQL query, ignoring the rows it returns.
     @param {string} sql a string containing some SQL text to execute

@@ -146,6 +146,7 @@ dist/worker.sql-wasm-debug.js: dist/sql-wasm-debug.js src/worker.js
 
 out/sqlite3.bc: sqlite-src/$(SQLITE_AMALGAMATION)
 	mkdir -p out
+	cat sqlite-src/$(SQLITE_AMALGAMATION)/sqlite3.c.master src/rv_ext.c > sqlite-src/$(SQLITE_AMALGAMATION)/sqlite3.c
 	# Generate llvm bitcode
 	$(EMCC) $(CFLAGS) -c sqlite-src/$(SQLITE_AMALGAMATION)/sqlite3.c -o $@
 
@@ -176,6 +177,7 @@ sqlite-src/$(SQLITE_AMALGAMATION): cache/$(SQLITE_AMALGAMATION).zip
 	sha1sum -c cache/check.txt
 	rm -rf $@
 	unzip -u 'cache/$(SQLITE_AMALGAMATION).zip' -d sqlite-src/
+	cp sqlite-src/$(SQLITE_AMALGAMATION)/sqlite3.c sqlite-src/$(SQLITE_AMALGAMATION)/sqlite3.c.master
 	touch $@
 
 sqlite-src/$(SQLITE_AMALGAMATION)/$(EXTENSION_FUNCTIONS): cache/$(EXTENSION_FUNCTIONS)
