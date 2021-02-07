@@ -6332,6 +6332,12 @@ var _memset = Module["_memset"] = createExportWrapper("memset");
 var _sqlite3_free = Module["_sqlite3_free"] = createExportWrapper("sqlite3_free");
 
 /** @type {function(...*):?} */
+var _sqlite3_value_double = Module["_sqlite3_value_double"] = createExportWrapper("sqlite3_value_double");
+
+/** @type {function(...*):?} */
+var _sqlite3_value_text = Module["_sqlite3_value_text"] = createExportWrapper("sqlite3_value_text");
+
+/** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = createExportWrapper("__errno_location");
 
 /** @type {function(...*):?} */
@@ -6347,13 +6353,7 @@ var _sqlite3_clear_bindings = Module["_sqlite3_clear_bindings"] = createExportWr
 var _sqlite3_value_blob = Module["_sqlite3_value_blob"] = createExportWrapper("sqlite3_value_blob");
 
 /** @type {function(...*):?} */
-var _sqlite3_value_text = Module["_sqlite3_value_text"] = createExportWrapper("sqlite3_value_text");
-
-/** @type {function(...*):?} */
 var _sqlite3_value_bytes = Module["_sqlite3_value_bytes"] = createExportWrapper("sqlite3_value_bytes");
-
-/** @type {function(...*):?} */
-var _sqlite3_value_double = Module["_sqlite3_value_double"] = createExportWrapper("sqlite3_value_double");
 
 /** @type {function(...*):?} */
 var _sqlite3_value_int = Module["_sqlite3_value_int"] = createExportWrapper("sqlite3_value_int");
@@ -6384,6 +6384,9 @@ var _sqlite3_result_text = Module["_sqlite3_result_text"] = createExportWrapper(
 
 /** @type {function(...*):?} */
 var _sqlite3_step = Module["_sqlite3_step"] = createExportWrapper("sqlite3_step");
+
+/** @type {function(...*):?} */
+var _sqlite3_sql = Module["_sqlite3_sql"] = createExportWrapper("sqlite3_sql");
 
 /** @type {function(...*):?} */
 var _sqlite3_column_count = Module["_sqlite3_column_count"] = createExportWrapper("sqlite3_column_count");
@@ -6423,9 +6426,6 @@ var _sqlite3_bind_text = Module["_sqlite3_bind_text"] = createExportWrapper("sql
 
 /** @type {function(...*):?} */
 var _sqlite3_bind_parameter_index = Module["_sqlite3_bind_parameter_index"] = createExportWrapper("sqlite3_bind_parameter_index");
-
-/** @type {function(...*):?} */
-var _sqlite3_sql = Module["_sqlite3_sql"] = createExportWrapper("sqlite3_sql");
 
 /** @type {function(...*):?} */
 var _sqlite3_normalized_sql = Module["_sqlite3_normalized_sql"] = createExportWrapper("sqlite3_normalized_sql");
